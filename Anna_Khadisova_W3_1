@@ -1,0 +1,243 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
+import math
+from numpy import sqrt 
+from math import cos
+
+#   a) get the sample of normally distributed numbers, dimensions 2, the box-muller transform
+array_Z = np.zeros(2000)
+for i in range(0, 2000):         # sample of distribution
+    m = 0
+    sigma = 1
+    c = 2 * math.pi
+    alpha_1 = np.random.rand()   # равномерное распределение в интервале 0, 1
+    alpha_2 = np.random.rand()
+    r = sqrt(-2 * math.log(alpha_1))
+    feta = c  * alpha_2
+    Z = r * cos(feta)
+    Z = m + sigma * Z
+    array_Z[i] = Z
+#plt.hist(array_Z)
+array_Z = np.reshape(array_Z, (2, 1000))
+
+#print(array_Z)
+print(array_Z.shape)
+
+#n = 3
+#m = 1000000
+#Z = np.round(np.random.normal(0, 1, [n,m]))
+#print(Z)
+
+# C.T * Z - this is the answer
+#Sigma = [[1.0, 0.5, 0.5], [0.5, 2.0, 0.3], [0.5, 0.3, 1.5]]
+#Sigma = np.array(Sigma)
+#print(Sigma.reshape((3, 3)))
+
+Sigma = [[1.0, 0.], [0., 1.0]]    # sigma for Cholesky Decomposition
+Sigma = np.array(Sigma)
+
+print(Sigma.reshape((2, 2)))
+
+C = np.linalg.cholesky(Sigma)
+C = np.transpose(C)
+#C.shape
+#Z.shape
+X = np.dot(C, array_Z)
+print(X)
+#X = np.transpose(X)
+#print(np.cov(X))
+
+X.shape
+
+#  b) Estimate the parameters
+X = np.reshape(X, (1, 2000))
+print(np.mean(X))
+print(np.std(X))
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
+import math
+from numpy import sqrt 
+from math import cos
+
+#   a) get the sample of normally distributed numbers, dimensions 5, the box-muller transform
+array_Z = np.zeros(5000)
+for i in range(0, 5000):         # sample of distribution
+    m = 0
+    sigma = 1
+    c = 2 * math.pi
+    alpha_1 = np.random.rand()   # равномерное распределение в интервале 0, 1
+    alpha_2 = np.random.rand()
+    r = sqrt(-2 * math.log(alpha_1))
+    feta = c  * alpha_2
+    Z = r * cos(feta)
+    Z = m + sigma * Z
+    array_Z[i] = Z
+#plt.hist(array_Z)
+array_Z = np.reshape(array_Z, (5, 1000))
+
+#print(array_Z)
+print(array_Z.shape)
+
+#n = 3
+#m = 1000000
+#Z = np.round(np.random.normal(0, 1, [n,m]))
+#print(Z)
+
+# C.T * Z - this is the answer
+#Sigma = [[1.0, 0.5, 0.5], [0.5, 2.0, 0.3], [0.5, 0.3, 1.5]]
+#Sigma = np.array(Sigma)
+#print(Sigma.reshape((3, 3)))
+
+Sigma = [[1.0, 0., 0., 0., 0.], [0., 1.0, 0., 0., 0.], [0., 0., 1.0, 0., 0.], [0., 0., 0., 1.0, 0.], [0., 0, 0., 0., 1.0]]    # sigma for Cholesky Decomposition
+Sigma = np.array(Sigma)
+
+print(Sigma.reshape((5, 5)))
+
+C = np.linalg.cholesky(Sigma)
+C = np.transpose(C)
+#C.shape
+#Z.shape
+X = np.dot(C, array_Z)
+print(X)
+#X = np.transpose(X)
+#print(np.cov(X))
+
+X.shape
+
+#  b) Estimate the parameters
+X = np.reshape(X, (1, 5000))
+print(np.mean(X))
+print(np.std(X))
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
+import math
+from numpy import sqrt 
+from math import cos
+
+#   a) get the sample of normally distributed numbers, dimensions 10, the box-muller transform
+array_Z = np.zeros(10000)
+for i in range(0, 10000):         # sample of distribution
+    m = 0
+    sigma = 1
+    c = 2 * math.pi
+    alpha_1 = np.random.rand()   # равномерное распределение в интервале 0, 1
+    alpha_2 = np.random.rand()
+    r = sqrt(-2 * math.log(alpha_1))
+    feta = c  * alpha_2
+    Z = r * cos(feta)
+    Z = m + sigma * Z
+    array_Z[i] = Z
+#plt.hist(array_Z)
+array_Z = np.reshape(array_Z, (10, 1000))
+
+#print(array_Z)
+print(array_Z.shape)
+
+#n = 3
+#m = 1000000
+#Z = np.round(np.random.normal(0, 1, [n,m]))
+#print(Z)
+
+# C.T * Z - this is the answer
+#Sigma = [[1.0, 0.5, 0.5], [0.5, 2.0, 0.3], [0.5, 0.3, 1.5]]
+#Sigma = np.array(Sigma)
+#print(Sigma.reshape((3, 3)))
+
+Sigma = [[1, 0, 0, 0, 0,0, 0, 0, 0, 0], [0, 1, 0, 0, 0,0, 0, 0, 0, 0], [0, 0, 1, 0, 0,0, 0, 0, 0, 0], [0, 0, 0, 1, 0,0, 0, 0, 0, 0], [0, 0, 0, 0, 1,0, 0, 0, 0, 0],[0, 0, 0, 0, 0,1, 0, 0, 0, 0], [0, 0, 0, 0, 0,0, 1, 0, 0, 0], [0, 0, 0, 0, 0,0, 0, 1, 0, 0], [0, 0, 0, 0, 0,0, 0, 0, 1, 0], [0, 0, 0, 0, 0,0, 0, 0, 0, 1]]    # sigma for Cholesky Decomposition
+Sigma = np.array(Sigma)
+
+print(Sigma.reshape((10, 10)))
+
+C = np.linalg.cholesky(Sigma)
+C = np.transpose(C)
+#C.shape
+#Z.shape
+X = np.dot(C, array_Z)
+print(X)
+#X = np.transpose(X)
+#print(np.cov(X))
+
+X.shape
+
+#  b) Estimate the parameters
+X = np.reshape(X, (1, 10000))
+print(np.mean(X))
+print(np.std(X))
+
+
+
+
+# C, D
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
+import math
+from numpy import sqrt 
+from math import cos
+
+#   a) get the sample of normally distributed numbers, dimensions 2, the box-muller transform
+array_Z = np.zeros(2000)
+for i in range(0, 2000):         # sample of distribution
+    m = -2
+    sigma = 1
+    c = 2 * math.pi
+    alpha_1 = np.random.rand()   # равномерное распределение в интервале 0, 1
+    alpha_2 = np.random.rand()
+    r = sqrt(-2 * math.log(alpha_1))
+    feta = c  * alpha_2
+    Z = r * cos(feta)
+    Z = m + sigma * Z
+    array_Z[i] = Z
+#plt.hist(array_Z)
+array_Z = np.reshape(array_Z, (2, 1000))
+
+#print(array_Z)
+print(array_Z.shape)
+
+#n = 3
+#m = 1000000
+#Z = np.round(np.random.normal(0, 1, [n,m]))
+#print(Z)
+
+# C.T * Z - this is the answer
+#Sigma = [[1.0, 0.5, 0.5], [0.5, 2.0, 0.3], [0.5, 0.3, 1.5]]
+#Sigma = np.array(Sigma)
+#print(Sigma.reshape((3, 3)))
+
+Sigma = [[0.5, 2], [0.3, 0.7]]    # sigma for Cholesky Decomposition
+Sigma = np.array(Sigma)
+
+print(Sigma.reshape((2, 2)))
+
+C = np.linalg.cholesky(Sigma)
+C = np.transpose(C)
+#C.shape
+#Z.shape
+X = np.dot(C, array_Z)
+print(X)
+#X = np.transpose(X)
+#print(np.cov(X))
+
+X.shape
+
+#  b) Estimate the parameters
+X = np.reshape(X, (1, 2000))
+print(np.mean(X))
+print(np.std(X))
